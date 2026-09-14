@@ -25,3 +25,24 @@ Tests: all passing? yes
 
 Conclusion:
 In this lab, I built a reproducible environment and repository structure using Git and Conda. I learned that vectorization in NumPy provides a dramatic speedup over pure Python loops. Automated testing with pytest validated the accuracy and boundary cases of the simulation.
+
+Lab B: Data Visualization and Snakemake Automation
+
+In this lab, we automated the data analysis workflow for radioactive decay observation:
+
+1. **Data Processing & Plotting (`plot.py`)**:
+   - Read observed decay counts from `decay_observed.csv` using `numpy.loadtxt`.
+   - Calculated the theoretical decay curve $N(t) = N_0 e^{-lambda t} with lambda = 0.3.
+   - Generated a 1x2 comparative figure (`figure.png`) with shared axes comparing experimental scatter data against the theoretical curve.
+
+2. **Workflow Automation (`Snakefile`)**:
+   - Defined a Snakemake pipeline linking inputs (`plot.py`, `decay_observed.csv`) to the output (`figure.png`).
+   - Automated rule execution to ensure reproducibility when raw data or scripts change.
+
+### How to Run
+
+To run the pipeline and generate the figure automatically:
+
+```bash
+cd "PW1/Lab B"
+snakemake --cores 1
