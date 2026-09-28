@@ -6,4 +6,5 @@ dependencies:
   - numpy
   - pytest
   - matplotlib
+  - scipy
   - snakemake
