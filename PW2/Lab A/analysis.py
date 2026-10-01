@@ -54,3 +54,32 @@ ax3.legend()
 
 plt.tight_layout()
 plt.savefig("motion.png")
+
+# BONUS : 2D Trajectory Analysis
+print("\n--- Bonus Part ---")
+
+t_2d, x_2d, y_2d = np.loadtxt("trajectory.csv", delimiter=",", skiprows=1, unpack=True)
+
+vx = np.gradient(x_2d, t_2d)
+vy = np.gradient(y_2d, t_2d)
+v_total = np.sqrt(vx**2 + vy**2)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+ax1.plot(x_2d, y_2d, "b-", label="Trajectory")
+ax1.set_xlabel("x (m)")
+ax1.set_ylabel("y (m)")
+ax1.set_title("2D Trajectory")
+ax1.grid(True)
+ax1.legend()
+
+ax2.plot(t_2d, v_total, "r-", label="Total speed |v|")
+ax2.set_xlabel("Time (s)")
+ax2.set_ylabel("Speed (m/s)")
+ax2.set_title("Speed vs Time")
+ax2.grid(True)
+ax2.legend()
+
+plt.tight_layout()
+plt.savefig("trajectory.png")
+print("Saved trajectory.png successfully!")

@@ -63,5 +63,11 @@ In this lab, we analyzed noisy position data of a falling object to explore nume
    - **Max position error**: $0.78\text{ m}$.
    - **Conclusion**: Integration accumulates values and causes random measurement noise to cancel out, effectively smoothing the data and accurately recovering the original position despite highly noisy acceleration.
 
+3. **Bonus: 2D Trajectory Analysis**:
+   - Analyzed 2D motion data from `trajectory.csv` ($x$ and $y$ over time $t$).
+   - Computed velocity components $v_x = \frac{dx}{dt}$, $v_y = \frac{dy}{dt}$ using `numpy.gradient` and overall speed $\vert{}v\vert{} = \sqrt{v_x^2 + v_y^2}$.
+   - Visualized the resulting figure-eight trajectory (Lissajous curve) alongside total speed over time in `trajectory.png`.
+
 #### Visualization
-Generated a 3-panel comparative plot saved as `motion.png`.
+- 3-panel comparative motion plot saved as `motion.png`.
+- 2D trajectory and magnitude of velocity plot saved as `trajectory.png`.
