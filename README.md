@@ -71,3 +71,28 @@ In this lab, we analyzed noisy position data of a falling object to explore nume
 #### Visualization
 - 3-panel comparative motion plot saved as `motion.png`.
 - 2D trajectory and magnitude of velocity plot saved as `trajectory.png`.
+
+### Lab B: Optimization in Chemistry
+
+#### Part 2: Three Routes to a Minimum
+
+We compared three optimization algorithms on two different mathematical landscapes:
+
+1. **Simple Convex Function ($f(x) = (x-3)^2 + 1$)**:
+   - **Methods tested from $x_0 = 0$**: Gradient Descent, Newton's Method (on $f'(x) = 0$), and SLSQP (`scipy.optimize.minimize`).
+   - **Results**: All three methods converged seamlessly to the global minimum at $x = 3.0000$ ($f(x) = 1.0000$).
+   - **Observation**: On a simple convex landscape, the initial starting guess and algorithm choice do not alter the final result.
+
+2. **Harder Landscape ($g(x) = x^4 - 3x^2 + x + 5$)**:
+   - **Gradient Descent**:
+     - From $x_0 = 0$: Converged to local/global minimum at $x \approx -1.3008$ ($g(x) \approx 1.4861$).
+     - From $x_0 = 2$: Converged to local minimum at $x \approx 1.1309$ ($g(x) \approx 3.9298$).
+   - **Newton's Method**:
+     - From $x_0 = 0$: Solved $g'(x) = 0$ and landed on $x \approx 0.1699$ ($g(x) \approx 5.0841$). Evaluating $g''(0.1699) = -5.65 < 0$ confirmed this stationary point is a **local maximum**, not a minimum.
+     - From $x_0 = 2$: Solved $g'(x) = 0$ and landed on $x \approx 1.1309$ ($g(x) \approx 3.9298$). Evaluating $g''(1.1309) = 9.35 > 0$ confirmed a **local minimum**.
+   - **SLSQP (`minimize`)**:
+     - From $x_0 = 0$: Found global minimum at $x \approx -1.3009$ ($g(x) \approx 1.4861$).
+     - From $x_0 = 2$: Found global minimum at $x \approx -1.3006$ ($g(x) \approx 1.4861$).
+
+**Key Takeaways**:
+- On complex landscapes with multiple stationary points, Newton's method can converge to local maxima because it only seeks root locations where the first derivative equals zero ($g'(x) = 0$). Checking the second derivative ($g'' > 0$) is essential.
