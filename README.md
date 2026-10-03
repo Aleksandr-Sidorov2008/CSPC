@@ -105,3 +105,17 @@ We fitted a first-order rate law $C(t) = C_0 e^{-kt}$ to experimental concentrat
 - **Optimization Method**: Used `scipy.optimize.minimize` with the `SLSQP` algorithm bounded within $k \in [0, 5]$.
 - **Fitted Parameter**: Obtained a rate constant of $k \approx 0.2618 \text{ s}^{-1}$.
 - **Visualization**: Generated `kinetics.png` demonstrating an excellent exponential fit over the noisy experimental measurements.
+
+#### Part 4: Chemical Equilibrium
+
+We computed the equilibrium extent $x$ for the reaction $\text{H}_2 + \text{I}_2 \rightleftharpoons 2\text{HI}$ starting from $1\text{ mol } \text{H}_2$ and $1\text{ mol } \text{I}_2$ with equilibrium constant $K = 15.6$:
+
+- **Methods**: Solved the equilibrium equation $\frac{(2x)^2}{(1-x)^2} - K = 0$ using:
+  1. `scipy.optimize.newton` (root-finding on the imbalance function directly).
+  2. `scipy.optimize.minimize` with `SLSQP` (minimizing the squared imbalance $[k\_imbalance(x)]^2$).
+- **Results**: Both methods yielded identical progress extent $x \approx 0.6638$.
+- **Equilibrium Composition**:
+  - $n(\text{H}_2) \approx 0.3362\text{ mol}$
+  - $n(\text{I}_2) \approx 0.3362\text{ mol}$
+  - $n(\text{HI}) \approx 1.3277\text{ mol}$
+- **Visualization**: Generated `equilibrium.png` showing reagent decay and product accumulation over reaction progress, marking the equilibrium point $x \approx 0.6638$.
