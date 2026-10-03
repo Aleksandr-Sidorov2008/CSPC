@@ -96,3 +96,12 @@ We compared three optimization algorithms on two different mathematical landscap
 
 **Key Takeaways**:
 - On complex landscapes with multiple stationary points, Newton's method can converge to local maxima because it only seeks root locations where the first derivative equals zero ($g'(x) = 0$). Checking the second derivative ($g'' > 0$) is essential.
+
+#### Part 3: Reaction Kinetics Fitting
+
+We fitted a first-order rate law $C(t) = C_0 e^{-kt}$ to experimental concentration measurements (`kinetics.csv`) using non-linear least squares optimization:
+
+- **Objective Function**: Minimized the sum of squared errors between experimental data and theoretical exponential decay.
+- **Optimization Method**: Used `scipy.optimize.minimize` with the `SLSQP` algorithm bounded within $k \in [0, 5]$.
+- **Fitted Parameter**: Obtained a rate constant of $k \approx 0.2618 \text{ s}^{-1}$.
+- **Visualization**: Generated `kinetics.png` demonstrating an excellent exponential fit over the noisy experimental measurements.
