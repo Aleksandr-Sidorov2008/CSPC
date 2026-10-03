@@ -119,3 +119,11 @@ We computed the equilibrium extent $x$ for the reaction $\text{H}_2 + \text{I}_2
   - $n(\text{I}_2) \approx 0.3362\text{ mol}$
   - $n(\text{HI}) \approx 1.3277\text{ mol}$
 - **Visualization**: Generated `equilibrium.png` showing reagent decay and product accumulation over reaction progress, marking the equilibrium point $x \approx 0.6638$.
+
+#### Part 5 (Bonus): Titration Equivalence Point
+
+We identified the equivalence point in a titration curve from measured pH vs. added base volume data (`titration.csv`):
+
+- **Method**: Computed the derivative $\frac{dpH}{dV}$ using `numpy.gradient` to identify the point of maximum slope (`np.argmax`).
+- **Equivalence Point**: Obtained $V_{\text{eq}} \approx 50.00 \text{ mL}$.
+- **Visualization**: Generated `titration.png` with side-by-side plots displaying the titration curve and its derivative peak at $V_{\text{eq}}$.
