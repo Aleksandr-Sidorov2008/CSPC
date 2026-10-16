@@ -170,3 +170,18 @@ We split the maximum heart rate (`thalach`) into two groups based on the binary 
 We investigated the relationship between patient age and maximum heart rate (`thalach`):
 - **Pearson Correlation Coefficient:** $r = -0.39381$ ($p = 1.11 \times 10^{-12}$).
 - **Conclusion:** We reject $H_0$. There is a statistically significant, moderate negative correlation between age and maximum heart rate (`age_thalach_correlation.png`), indicating that peak exercise heart rate reliably decreases as age increases.
+
+### Dataset 2 - A Chemical-exposure Mystery
+
+#### 6. The Naive Analysis
+- **Result:** Naive Pearson correlation showed Benzene vs Malignancy at $r = 0.3847$ ($p = 1.28 \times 10^{-36}$) and Cadmium vs Malignancy at $r = 0.8800$. (Note: While Cadmium had a strong direct correlation, Benzene showed a deceptive prominent naive association).
+- **Naive Conclusion:** At face value, Benzene appeared strongly associated with tumour malignancy.
+
+#### 7. Look Again (Confounding Variable)
+- **Method:** Controlled for the confounding effect of area pollution index by splitting data into pollution bins.
+- **Result:** Within stratified pollution brackets, Cadmium maintained its strong biological association with malignancy, while Benzene's confounding proxy effect was exposed.
+- **Conclusion:** **Cadmium** is the true biological cause of malignancy. **Benzene** only looked guilty due to confounding correlation with overall area pollution.
+
+#### Bonus: Categorical Unpredictability
+- **Method:** Computed proportions and Shannon entropy for the categorical `target` column of the heart dataset.
+- **Result:** Class proportions: 0 ($54.1\%$), 1 ($18.2\%$), 2 ($11.9\%$), 3 ($11.6\%$), 4 ($4.3\%$). Shannon Entropy = $1.8459$ bits, quantifying the distribution balance and unpredictability across disease classes.
